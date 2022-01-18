@@ -12,7 +12,7 @@
 /build
 
 # dev
-/build
+/public
 
 # misc
 .DS_Store
