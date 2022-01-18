@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import './App.css';
+import Measure from './Measure/Measure';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1> Hi, I am the React app.</h1>
+        <Measure name="electricity" />
       </div>
     );
   }
