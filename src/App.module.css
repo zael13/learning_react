@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+.Button {
+  background-color: transparent;
+  color: grey;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 10px;
+  margin: 10px;
+  font-weight: bold;
+}
