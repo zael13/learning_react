@@ -1,20 +1,22 @@
-import { Component } from 'react';
 import './App.css';
-import Signup from './Auth/Signup';
-import Login from './Auth/Login';
 import Measure from './Measure/Measure';
 
+import { Amplify } from 'aws-amplify';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Signup></Signup>
-        <Login></Login> 
-        <Measure name="electricity" />
-      </div>
-    );
-  }
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
+
+function App({ signOut, user }) {
+  return (
+    <div>
+      <h1>Hello {user.username}</h1>
+      <button onClick={signOut}>Sign out</button>
+      <Measure></Measure>
+    </div>
+  );
 }
 
-export default App;
+export default withAuthenticator(App);
