@@ -1,4 +1,4 @@
-import './App.css';
+import styles from "./App.module.css"
 import Measure from './Measure/Measure';
 
 import { Amplify } from 'aws-amplify';
@@ -11,10 +11,10 @@ Amplify.configure(awsExports);
 
 function App({ signOut, user }) {
   return (
-    <div>
-      <h1>Hello {user.username}</h1>
-      <button onClick={signOut}>Sign out</button>
+    <div className={styles.App}>
+      {/* <h1>Hello {user.username}</h1> */}
       <Measure></Measure>
+      <button className={styles.Button} onClick={signOut}>Sign out</button>
     </div>
   );
 }

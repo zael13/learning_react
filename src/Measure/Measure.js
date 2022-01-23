@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import Amplify, { API } from 'aws-amplify';
 import { Auth } from "aws-amplify";
+import styles from "./Measure.module.css"
 
 const Measure = (props) => {
-    const [email, setEmail] = useState("")
-    const [measure, setMeasure] = useState("")   
+    const [email, setEmail] = useState("None")
+    const [measure, setMeasure] = useState("None")   
 
     const getData = async () => { 
         const apiName = 'ServiceApi';
@@ -28,10 +29,10 @@ const Measure = (props) => {
 
     const value = Math.random() * 10
     return (
-        <div>
+        <div className={styles.Div}>
             <p> I am a {props.name} measure: {measure} </p>
             <p> Requested by user: {email} </p>
-            <button onClick={async () => getData()}> Click to get data </button>
+            <button className={styles.Button} onClick={async () => getData()}> Click to get data </button>
         </div>
     );
 }
