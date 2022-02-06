@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import styles from "./Device.module.css"
+import EditDevice from "./EditDevice/EditDdevice";
 import Plant from "./Plant/Plant";
 
 const Device = (props) => {
@@ -11,7 +12,7 @@ const Device = (props) => {
             {/* <h2> {props.name} </h2> */}
             {/* <p> Status is {props.status} </p> */}
             {/* <p> Recommendation: {props.recommendation} </p> */}
-            <button className={styles.Button}> Edit </button>
+            <button className={styles.Button} onClick={props.onEdit}> Edit </button>
         </div>
     );
 }

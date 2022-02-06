@@ -1,10 +1,22 @@
 import React, {useEffect, useRef, useState} from "react";
 import {API, Auth} from 'aws-amplify';
 import Device from "./Device/Device";
+import EditDevice from "./Device/EditDevice/EditDdevice";
+import Modal from "../../components/UI/Modal/Modal";
 
 const Devices = (props) => {
     const [devices, setDevices] = useState([]);
     const firstUpdate = useRef(true);    
+    const [editing, setEditing] = useState(false);
+    
+
+    const editDeviceHandler = () => {
+      setEditing(true);
+    };
+
+    const submitDeviceHandler = () => {
+      setEditing(false);
+    };
 
     const getData = async () => { 
       if (firstUpdate.current) {
@@ -46,14 +58,23 @@ const Devices = (props) => {
     else {   
       return (
           <div>
+            <Modal show={editing}>
+              <EditDevice 
+                device={devices[0]} 
+                onSubmit={submitDeviceHandler}
+              />      
+            </Modal>
+
             {devices.map(device => {
               return <Device 
                 key={device.name}
                 name={device.name}
-                // status={device.status}
+                status={device.status}
                 recommendation={device.recommendation}
                 temperature={device.temperature}
-                humidity={device.humidity} />
+                humidity={device.humidity} 
+                onEdit={editDeviceHandler}
+                />
             })}
           </div>
       );
