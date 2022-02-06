@@ -9,7 +9,7 @@ const Device = (props) => {
             <Plant/>
             <p> Temperature: <b>{props.temperature}</b> °C</p>
             <p> Humidity: <b>{props.humidity}</b> %</p>
-            {/* <h2> {props.name} </h2> */}
+            <h2> {props.name} </h2>
             {/* <p> Status is {props.status} </p> */}
             {/* <p> Recommendation: {props.recommendation} </p> */}
             <button className={styles.Button} onClick={props.onEdit}> Edit </button>

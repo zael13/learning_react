@@ -8,14 +8,17 @@ const Devices = (props) => {
     const [devices, setDevices] = useState([]);
     const firstUpdate = useRef(true);    
     const [editing, setEditing] = useState(false);
+    const [focusedDevice, setFocusedDevice] = useState(null);
     
 
-    const editDeviceHandler = () => {
+    const editDeviceHandler = (device) => {
+      setFocusedDevice(device);
       setEditing(true);
     };
 
     const submitDeviceHandler = () => {
       setEditing(false);
+      setFocusedDevice(null);
     };
 
     const getData = async () => { 
@@ -60,7 +63,7 @@ const Devices = (props) => {
           <div>
             <Modal show={editing}>
               <EditDevice 
-                device={devices[0]} 
+                device={focusedDevice} 
                 onSubmit={submitDeviceHandler}
               />      
             </Modal>
@@ -73,7 +76,7 @@ const Devices = (props) => {
                 recommendation={device.recommendation}
                 temperature={device.temperature}
                 humidity={device.humidity} 
-                onEdit={editDeviceHandler}
+                onEdit={() => editDeviceHandler(device)}
                 />
             })}
           </div>
